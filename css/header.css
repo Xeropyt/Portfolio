@@ -1,0 +1,112 @@
+:root {
+  --header-height: 64px;
+  --header-top: 0;
+  --header-radius: 14px;
+  --header-bg: rgba(17, 19, 23, 0.62);
+  --header-border: rgba(255, 255, 255, 0.06);
+}
+
+.header {
+  position: fixed; /* change to fixed so it stays at top and background can extend under it */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 8px 20px;
+  background: transparent;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1100px;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  background: rgba(17, 19, 23, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--header-border);
+  border-radius: var(--header-radius);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.header-inner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+}
+
+.brand a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.nav a {
+  color: #e9eefb;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background .12s ease, transform .12s ease;
+}
+.nav a:hover {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-1px);
+}
+
+.hero-image { display: none; }
+
+.hero-overlay {
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Light & shadow layer for depth */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,0.15),
+      rgba(0,0,0,0.25)
+    );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
+
+@media (max-width: 520px) {
+  :root {
+    --header-height: 52px;
+    --header-radius: 10px;
+  }
+  .header { padding: 6px 12px; top: 8px; }
+  .nav a {margin-left: 8px; padding: 6px 8px; font-size: 0.85rem;}
+  }
